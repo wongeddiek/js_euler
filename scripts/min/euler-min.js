@@ -81,23 +81,38 @@ function fib(max) {
 }
 
 // Largest Prime Factor - bad
-function primefactor(max) {
-  for (var i = max; i > 0; i--) {
-    if (i % max == 0) {
-      console.log(i)
-      for (var j = 2; j <= i; j++) {
-        if (j == i) {
-          return i
-        }
-        if (i % j == 0) {
-          break
-        }
-      }
-    }
-  }
-}
+// function primefactor(max) {
+//   for (var i = max; i > 0; i--) {
+//     if (i % max == 0) {
+//       console.log(i)
+//       for (var j = 2; j <= i; j++) {
+//         if (j == i) {
+//           return i
+//         }
+//         if (i % j == 0) {
+//           break
+//         }
+//       }
+//     }
+//   }
+// }
 
 // Largest Prime Factor - good
+var textLPF = document.querySelector('.textLPF');
+var submitLPF = document.querySelector('.submitLPF');
+var outputLPF = document.querySelector('.outputLPF');
+
+submitLPF.addEventListener('click', runLPF);
+
+function runLPF() {
+  var valueLPF = Number(textLPF.value);
+  if (!isNaN(valueLPF)) {
+    var resultLPF = primefactor(valueLPF);
+    outputLPF.textContent = "The result is : " + resultLPF;
+  } else {
+    outputLPF.textContent = "You did not enter a valid number.";
+  }
+}
 function primefactor(max) {
   var pfactors = []
   var factor = 2

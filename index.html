@@ -3,10 +3,13 @@
   <head>
     <meta charset="utf-8">
     <title>Project Euler</title>
+    <!-- CSS Links -->
+    <link rel="stylesheet" href="css/min/main-min.css">
   </head>
   <body>
     <h1>Euler's Challenges</h1>
-    <div class="multiples35">
+    <div class="multiples35 mainContainer">
+      <h2>Multiples of 3 and 5</h2>
       <p>Enter a number below.  It will return the sum of all multiples of 3 and 5 that are less than the number entered.</p>
       <div class="formMult">
         <label for="textMult">Enter your number:</label>
@@ -18,7 +21,8 @@
       </div>
     </div>
 
-    <div class="fibonacci">
+    <div class="fibonacci mainContainer">
+      <h2>Even Fibonacci numbers</h2>
       <p>Enter a number below.  It will return the sum of all even-valued Fibonacci sequence terms less than the number entered.</p>
       <div class="formFib">
         <label for="textFib">Enter your number:</label>
@@ -27,6 +31,19 @@
       </div>
       <div class="resultFib">
         <p class="outputFib"></p>
+      </div>
+    </div>
+
+    <div class="fibonacci mainContainer">
+      <h2>Largest prime factor</h2>
+      <p>Enter a number below.  It will return largest prime factor of the number entered.</p>
+      <div class="formLPF">
+        <label for="textLPF">Enter your number:</label>
+        <input type="text" name="textLPF" class="textLPF">
+        <input type="submit" name="submitLPF" value="Submit" class="submitLPF">
+      </div>
+      <div class="resultLPF">
+        <p class="outputLPF"></p>
       </div>
     </div>
 
