@@ -1,29 +1,45 @@
 // Multiples of 3 and 5
-function multiples35(x,y,max) {
-  arr = []
-  for (var i = 1; x * i < max; i++) {
-    arr.push(x * i)
+// function multiples35(x,y,max) {
+//   arr = []
+//   for (var i = 1; x * i < max; i++) {
+//     arr.push(x * i)
+//   }
+//   for (var j = 1; y * j < max; j++) {
+//     arr.push(y * j)
+//   }
+//   var sum = 0
+//   for (var k = 1; (x * y * k) < max; k++) {
+//     var index = arr.indexOf(x * y * k)
+//     arr.splice(index,1)
+//   }
+//   for (var i = 0; i < arr.length; i++) {
+//     sum += arr[i]
+//   }
+//   console.log(arr)
+//   return sum
+// }
+var textMult = document.querySelector('.textMult');
+var submitMult = document.querySelector('.submitMult');
+var outputMult = document.querySelector('.outputMult');
+
+submitMult.addEventListener('click', runMult)
+
+function runMult() {
+  var valueMult = Number(textMult.value);
+  if (!isNaN(valueMult)) {
+    var resultMult = mult35(valueMult);
+    outputMult.textContent = "The result is : " + resultMult;
   }
-  for (var j = 1; y * j < max; j++) {
-    arr.push(y * j)
+  else {
+    outputMult.textContent = "You did not enter a valid number.";
   }
-  var sum = 0
-  for (var k = 1; (x * y * k) < max; k++) {
-    var index = arr.indexOf(x * y * k)
-    arr.splice(index,1)
-  }
-  for (var i = 0; i < arr.length; i++) {
-    sum += arr[i]
-  }
-  console.log(arr)
-  return sum
 }
 
-function solution(number) {
+function mult35(number) {
     var total = 0;
-    for (var i = 3; i < number; i++)
+    for (var i = 3; i < number; i++);
     {
-        if (i % 3 === 0 || i % 5 === 0)
+        if (i % 3 === 0 || i % 5 === 0);
         {
             total += i;
         }
@@ -32,20 +48,36 @@ function solution(number) {
 }
 
 // Even Fibonacci numbers
+var textFib = document.querySelector('.textFib');
+var submitFib = document.querySelector('.submitFib');
+var outputFib = document.querySelector('.outputFib');
+
+submitFib.addEventListener('click', runFib);
+
+function runFib() {
+  var valueFib = Number(textFib.value);
+  if (!isNaN(valueFib)) {
+    var resultFib = fib(valueFib);
+    outputFib.textContent = "The result is : " + resultFib;
+  } else {
+    outputFib.textContent = "You did not enter a valid number.";
+  }
+}
+
 function fib(max) {
-  var i = 0
-  var j = 1
-  var sum = 0
-  var temp = 0
+  var i = 0;
+  var j = 1;
+  var sum = 0;
+  var temp = 0;
   while (j < max) {
     if (j % 2 == 0) {
-      sum += j
+      sum += j;
     }
-    temp = j
-    j = i + j
-    i = temp
+    temp = j;
+    j = i + j;
+    i = temp;
   }
-  return sum
+  return sum;
 }
 
 // Largest Prime Factor - bad

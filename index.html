@@ -2,12 +2,34 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <!-- JS links -->
-    <script src="scripts/main.js" charset="utf-8"></script>
-    <script src="scripts/min/euler-min.js" charset="utf-8"></script>
-    <title>Javascript!</title>
+    <title>Project Euler</title>
   </head>
   <body>
-    <h1>Javascript!</h1>
+    <h1>Euler's Challenges</h1>
+    <div class="multiples35">
+      <p>Enter a number below.  It will return the sum of all multiples of 3 and 5 that are less than the number entered.</p>
+      <div class="formMult">
+        <label for="textMult">Enter your number:</label>
+        <input type="text" name="textMult" class="textMult">
+        <input type="submit" name="submitMult" value="Submit" class="submitMult">
+      </div>
+      <div class="resultMult">
+        <p class="outputMult"></p>
+      </div>
+    </div>
+
+    <div class="fibonacci">
+      <p>Enter a number below.  It will return the sum of all even-valued Fibonacci sequence terms less than the number entered.</p>
+      <div class="formFib">
+        <label for="textFib">Enter your number:</label>
+        <input type="text" name="textFib" class="textFib">
+        <input type="submit" name="submitFib" value="Submit" class="submitFib">
+      </div>
+      <div class="resultFib">
+        <p class="outputFib"></p>
+      </div>
+    </div>
+
+    <script src="scripts/min/euler-min.js" charset="utf-8"></script>
   </body>
 </html>
