@@ -18,34 +18,35 @@
 //   console.log(arr)
 //   return sum
 // }
+function runInput(inputX, funcName) {
+  var value = Number(inputX.value);
+  if (!isNaN(value)) {
+    var result = funcName(value);
+    return "The result is : " + result;
+  } else {
+    return "You did not enter a valid number.";
+  };
+};
+
 var textMult = document.querySelector('.textMult');
 var submitMult = document.querySelector('.submitMult');
 var outputMult = document.querySelector('.outputMult');
 
-submitMult.addEventListener('click', runMult)
+submitMult.addEventListener('click', runMult);
 
 function runMult() {
-  var valueMult = Number(textMult.value);
-  if (!isNaN(valueMult)) {
-    var resultMult = mult35(valueMult);
-    outputMult.textContent = "The result is : " + resultMult;
-  }
-  else {
-    outputMult.textContent = "You did not enter a valid number.";
-  }
-}
+  outputMult.textContent = runInput(textMult, mult35);
+};
 
 function mult35(number) {
     var total = 0;
-    for (var i = 3; i < number; i++);
-    {
-        if (i % 3 === 0 || i % 5 === 0);
-        {
+    for (var i = 3; i < number; i++) {
+        if (i % 3 === 0 || i % 5 === 0) {
             total += i;
-        }
-    }
+        };
+    };
     return total;
-}
+};
 
 // Even Fibonacci numbers
 var textFib = document.querySelector('.textFib');
@@ -55,13 +56,14 @@ var outputFib = document.querySelector('.outputFib');
 submitFib.addEventListener('click', runFib);
 
 function runFib() {
-  var valueFib = Number(textFib.value);
-  if (!isNaN(valueFib)) {
-    var resultFib = fib(valueFib);
-    outputFib.textContent = "The result is : " + resultFib;
-  } else {
-    outputFib.textContent = "You did not enter a valid number.";
-  }
+  outputFib.textContent = runInput(textFib, fib);
+  // var valueFib = Number(textFib.value);
+  // if (!isNaN(valueFib)) {
+  //   var resultFib = fib(valueFib);
+  //   outputFib.textContent = "The result is : " + resultFib;
+  // } else {
+  //   outputFib.textContent = "You did not enter a valid number.";
+  // }
 }
 
 function fib(max) {
@@ -105,14 +107,16 @@ var outputLPF = document.querySelector('.outputLPF');
 submitLPF.addEventListener('click', runLPF);
 
 function runLPF() {
-  var valueLPF = Number(textLPF.value);
-  if (!isNaN(valueLPF)) {
-    var resultLPF = primefactor(valueLPF);
-    outputLPF.textContent = "The result is : " + resultLPF;
-  } else {
-    outputLPF.textContent = "You did not enter a valid number.";
-  }
-}
+  outputLPF.textContent = runInput(textLPF, primefactor);
+  // var valueLPF = Number(textLPF.value);
+  // if (!isNaN(valueLPF)) {
+  //   var resultLPF = primefactor(valueLPF);
+  //   outputLPF.textContent = "The result is : " + resultLPF;
+  // } else {
+  //   outputLPF.textContent = "You did not enter a valid number.";
+  // }
+};
+
 function primefactor(max) {
   var pfactors = []
   var factor = 2
@@ -123,8 +127,8 @@ function primefactor(max) {
       remain = remain / factor
     }
     factor++
-    console.log("factor is: " + factor)
-    console.log("remain is: " + remain)
+    // console.log("factor is: " + factor)
+    // console.log("remain is: " + remain)
     if (factor * factor > remain) {
       if (remain > 1) {
         pfactors.push(remain)
