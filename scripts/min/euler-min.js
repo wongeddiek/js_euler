@@ -25,8 +25,8 @@ function runInput(inputX, funcName) {
     return "The result is : " + result;
   } else {
     return "You did not enter a valid number.";
-  };
-};
+  }
+}
 
 var textMult = document.querySelector('.textMult');
 var submitMult = document.querySelector('.submitMult');
@@ -36,17 +36,17 @@ submitMult.addEventListener('click', runMult);
 
 function runMult() {
   outputMult.textContent = runInput(textMult, mult35);
-};
+}
 
 function mult35(number) {
-    var total = 0;
-    for (var i = 3; i < number; i++) {
-        if (i % 3 === 0 || i % 5 === 0) {
-            total += i;
-        };
-    };
-    return total;
-};
+  var total = 0;
+  for (var i = 3; i < number; i++) {
+    if (i % 3 === 0 || i % 5 === 0) {
+      total += i;
+    }
+  }
+  return total;
+}
 
 // Even Fibonacci numbers
 var textFib = document.querySelector('.textFib');
@@ -115,29 +115,29 @@ function runLPF() {
   // } else {
   //   outputLPF.textContent = "You did not enter a valid number.";
   // }
-};
+}
 
 function primefactor(max) {
-  var pfactors = []
-  var factor = 2
-  var remain = max
+  var pfactors = [];
+  var factor = 2;
+  var remain = max;
   while (remain > 1) {
-    while (remain % factor == 0) {
-      pfactors.push(factor)
-      remain = remain / factor
+    while (remain % factor === 0) {
+      pfactors.push(factor);
+      remain = remain / factor;
     }
-    factor++
+    factor++;
     // console.log("factor is: " + factor)
     // console.log("remain is: " + remain)
     if (factor * factor > remain) {
       if (remain > 1) {
-        pfactors.push(remain)
+        pfactors.push(remain);
       }
-      break
+      break;
     }
   }
-  console.log(pfactors)
-  return pfactors.pop()
+  console.log(pfactors);
+  return pfactors.pop();
 }
 
 
