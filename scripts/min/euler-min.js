@@ -1,23 +1,4 @@
-// Multiples of 3 and 5
-// function multiples35(x,y,max) {
-//   arr = []
-//   for (var i = 1; x * i < max; i++) {
-//     arr.push(x * i)
-//   }
-//   for (var j = 1; y * j < max; j++) {
-//     arr.push(y * j)
-//   }
-//   var sum = 0
-//   for (var k = 1; (x * y * k) < max; k++) {
-//     var index = arr.indexOf(x * y * k)
-//     arr.splice(index,1)
-//   }
-//   for (var i = 0; i < arr.length; i++) {
-//     sum += arr[i]
-//   }
-//   console.log(arr)
-//   return sum
-// }
+//function that takes the input, validates it, and runs the appropriate Euler function and returns the output string.
 function runInput(inputX, funcName) {
   var value = Number(inputX.value);
   if (!isNaN(value)) {
@@ -28,24 +9,45 @@ function runInput(inputX, funcName) {
   }
 }
 
+//sets the query variable to the querySelector method.
+var query = document.querySelector.bind(document);
+
 var textMult = document.querySelector('.textMult');
 var submitMult = document.querySelector('.submitMult');
 var outputMult = document.querySelector('.outputMult');
 
 submitMult.addEventListener('click', runMult);
 
+//runs the click function that calls the runInput function.
 function runMult() {
   outputMult.textContent = runInput(textMult, mult35);
 }
 
-function mult35(number) {
+// Multiples of 3 and 5
+function mult35(max) {
   var total = 0;
-  for (var i = 3; i < number; i++) {
+  //loops through numbers from 3 to max - 1.  If numbers are divisible by 3 or 5, add to total
+  for (var i = 3; i < max; i++) {
     if (i % 3 === 0 || i % 5 === 0) {
       total += i;
     }
   }
   return total;
+}
+
+// Multiples of 2 numbers that are less than max
+function multiples(x,y,max) {
+  //declares array to store multiples and sum to store total
+  var arr = [];
+  var sum = 0;
+  //loops through numbers from min of (x,y) to max - 1, add to array (and add to sum) if divisible by x or y
+  for (var i = Math.min(x,y); i < max; i++) {
+    if (i % x === 0 || i % y ===0) {
+      arr.push(i);
+      sum += i;
+    }
+  }
+  return {multiples: arr, sum: sum};
 }
 
 // Even Fibonacci numbers
@@ -66,6 +68,7 @@ function runFib() {
   // }
 }
 
+//Returns the sum of all even term Fibonacci sequence less than the max.
 function fib(max) {
   var i = 0;
   var j = 1;
@@ -117,11 +120,16 @@ function runLPF() {
   // }
 }
 
+//Function that returns the largest prime factor of a given input number.
 function primefactor(max) {
   var pfactors = [];
+  //Starts with the smallest prime number -2.
   var factor = 2;
+  //Sets remainder to the max.
   var remain = max;
+  //Loops through the remainder, and increment the factor.
   while (remain > 1) {
+    //If remainder is divisible by factor, adds it to the array (it is a prime factor), divide the remainder by factor repeatedly until remainder is no longer a multiple of the factor.
     while (remain % factor === 0) {
       pfactors.push(factor);
       remain = remain / factor;
@@ -136,7 +144,7 @@ function primefactor(max) {
       break;
     }
   }
-  console.log(pfactors);
+  // console.log(pfactors);
   return pfactors.pop();
 }
 
