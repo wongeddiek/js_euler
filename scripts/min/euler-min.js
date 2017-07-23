@@ -148,4 +148,171 @@ function primefactor(max) {
   return pfactors.pop();
 }
 
+//Problem 4 - Largest palindrome product
+String.prototype.reverse = function() {
+	return this.split("").reverse().join("")
+}
+
+function isPalin(x) {
+  return String(x) === String(x).reverse();
+}
+
+//Palindrome product check
+function palinProduct() {
+  var x = 999;
+  var y = 999;
+  var result = [];
+  for (var i = 0; x > 900 || y > 900; i++) {
+    // console.log('x is : ' + x)
+    // console.log('y is : ' + y)
+    // console.log('x*y is : ' + x * y)
+    // console.log("product is Palindrome? " + isPalin(x * y))
+    if (isPalin(x * y)) {
+      // return {x: x, y: y, product: x * y};
+      result.push(x * y);
+    }
+    if (x === y) {
+      y--;
+      x = 999;
+    } else {
+      x--;
+    }
+  }
+  var max = -Infinity;
+  for (var i = 0; i < result.length; i++) {
+    if (max < result[i]) {
+      max = result[i];
+    }
+  }
+  return max;
+}
+
+//Palindrome function with input
+function palinProductN(n) {
+  var xInit = Number(Math.pow(10, n) - 1);
+  var yInit = Number(Math.pow(10, n) - 1);
+  var x = xInit;
+  var y = yInit;
+  // console.log('initial x and y are : ' + x + " " + y)
+  var result = [];
+  for (; x > (xInit * 0.9) || y > (yInit * 0.9);) {
+    // console.log('x is : ' + x)
+    // console.log('y is : ' + y)
+    // console.log('x*y is : ' + x * y)
+    // console.log("product is Palindrome? " + isPalin(x * y))
+    if (isPalin(x * y)) {
+      // return {x: x, y: y, product: x * y};
+      result.push({x: x, y: y, product: x * y});
+    }
+    if (x === y) {
+      y--;
+      x = xInit;
+    } else {
+      x--;
+    }
+  }
+  var max = {x: 0, y: 0, product: -Infinity};
+  for (var i = 0; i < result.length; i++) {
+    if (max.product < result[i].product) {
+      max = result[i];
+    }
+  }
+  return max;
+}
+
+//Problem 5 - Smallest Multiple or LCM
+
+//find the LCM for a set of numbers.  Find the prime factors and multiply each prime the greatest numbers of times it occus in the set.
+// 12: 2 × 2 × 3
+// 80: 2 × 2 × 2 × 2 × 5 = 80
+// LCM: 2 x 2 x 2 x 2 x 3 x 5
+
+//function for finding the prime factors of a given input number
+function primefactorsArr(max) {
+  var pfactors = [];
+  var factor = 2;
+  var remain = max;
+  while (remain > 1) {
+    while (remain % factor === 0) {
+      pfactors.push(factor);
+      remain = remain / factor;
+    }
+    factor++;
+    if (factor * factor > remain) {
+      if (remain > 1) {
+        pfactors.push(remain);
+      }
+      break;
+    }
+  }
+  return pfactors;
+}
+
+function smallestMultiple(max) {
+  var primeFactors = [];
+  //get a list of prime factors between 1 and max.  Returns a 3D array where each index is an array of the prime factors for each number.
+  for (var i = 1; i <= max; i++) {
+    primeFactors.push(primefactorsArr(i));
+  }
+  //variable to store the lcm factors after removing the duplicates.
+  var lcmFactors = []
+  //loop running through each of the prime factor arrays .
+  for (var i = 0; i < primeFactors.length; i++) {
+    //loop running through each prime factor starting at 2, and ending at each original number.
+    for (var j = 2; j <= i+1; j++) {
+      var tempArr = [];
+      //loop that compares the result array and the prime factor arrays, and store only the "most occurrance" of the prime factor.  ie:  if result array has two "2"s, and prime factor arrays has four "2"s, it changes the result array to four "2"s.
+      while (true) {
+        var xIndex = lcmFactors.indexOf(j);
+        // console.log("xIndex is :" + xIndex)
+        var yIndex = primeFactors[i].indexOf(j);
+        // console.log("yIndex is : " + yIndex)
+        if (xIndex != -1 && yIndex != -1) {
+          lcmFactors.splice(xIndex, 1);
+          primeFactors[i].splice(yIndex, 1);
+          tempArr.push(j);
+          // console.log("tempArr is now : " + tempArr)
+        } else if (xIndex === -1 && yIndex != -1) {
+          primeFactors[i].splice(yIndex, 1);
+          tempArr.push(j);
+          // console.log("tempArr is now : " + tempArr)
+        } else {
+          break;
+        }
+      }
+      lcmFactors = tempArr.concat(lcmFactors);
+      // console.log("lcmFactors is now : " + lcmFactors)
+    }
+  }
+  // console.log("this is the lcmFactors : " + lcmFactors)
+  var sum = 1;
+  //loop multiplying all the numbers in the result array.
+  for (var i = 0; i < lcmFactors.length; i++) {
+    sum = sum * lcmFactors[i];
+  }
+  return sum;
+}
+
+//Sum Square Difference.  Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+function sumOfSquared(max) {
+  var sum = 0;
+  for (var i = 1; i <= max; i++) {
+    sum += i * i;
+  }
+  return sum;
+}
+
+function squaredOfSum(max) {
+  var sum = 0;
+  for (var i = 1; i <= max; i++) {
+    sum += i;
+  }
+  sum = sum * sum;
+  return sum;
+}
+
+function squaredSumDiff(max) {
+  return squaredOfSum(max) - sumOfSquared(max);
+}
+
 
