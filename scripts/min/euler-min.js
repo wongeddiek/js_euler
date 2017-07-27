@@ -85,6 +85,15 @@ function fib(max) {
   return sum;
 }
 
+//Fibonacci number function using recursion
+function fibonacci(n) {
+  if (n === 1 || n === 2) {
+    return 1;
+  } else {
+    return fibonacci(n-1) + fibonacci(n-2);
+  }
+}
+
 // Largest Prime Factor - bad
 // function primefactor(max) {
 //   for (var i = max; i > 0; i--) {
@@ -366,13 +375,53 @@ function largestProduct() {
     }
     productArr.push(product);
   }
-  var largestNum = -Infinity
+  var largestProd = -Infinity
   for (var i = 0; i < productArr.length; i++) {
-    if (productArr[i] > largestNum) {
-      largestNum = productArr[i];
+    if (productArr[i] > largestProd) {
+      largestProd = productArr[i];
     }
   }
-  return largestNum;
+  return largestProd;
+}
+
+//Problem 9 - Special Pythagorean triplet
+//There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+//Find the product abc.
+
+//Using the following Pythagorean triplet theorem:
+// When m and n are any two positive integers (m < n):
+//
+// a = 2nm
+// b = n2 - m2
+// c = n2 + m2
+
+// let a + b + c = x
+// m = x/2n - n
+// x/2n - n > 0
+// squareroot(x/2) > n
+
+function pyTriplet(sum) {
+  var n = 0;
+  var m = 0;
+  for (var i = 1; i < Math.sqrt(sum/2); i++) {
+    if ((sum / 2) % i === 0  && i > (sum / 2 / i - i)) {
+      m = (sum / 2) / i - i;
+      n = i;
+    }
+  }
+  var a = 2 * n * m;
+  var b = Math.pow(n,2) - Math.pow(m,2);
+  var c = Math.pow(n,2) + Math.pow(m,2);
+
+  return a * b * c;
+  // for (var i = 1; i < 333; i++) {
+  //   for (var j = i+1; i < 334; j++) {
+  //     for (var k = (1000 - i - j); i < 335; k++) {
+  //       if (Math.pow(i,2) + Math.pow(j,2) === Math.pow(k,2))
+  //         return i * j * k;
+  //     }
+  //   }
+  // }
 }
 
 
