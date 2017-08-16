@@ -424,4 +424,44 @@ function pyTriplet(sum) {
   // }
 }
 
+//Problem 10 - Summation of primes
+// The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+// Find the sum of all the primes below two million.
+
+//prime list function using Sieve of Eratosthenes algorithm
+function primeListFinder(max) {
+  // console.time();
+  var numList = [];
+  for (let i = 0; i <= max; i++) {
+    numList.push(true);
+  }
+  //turn all even index to false
+  for (let i = 4; i < numList.length; i+=2) {
+    numList[i] = false;
+  }
+  for (let i = 3; i < Math.sqrt(numList.length); i+=2) {
+    if (numList[i] != false) {
+      for (let j = i; i * j < numList.length; j+=2) {
+        numList[i * j] = false;
+      }
+    }
+  }
+  var primeList = [];
+  for (let i = 2; i < numList.length; i++) {
+    if (numList[i]) {
+      primeList.push(i);
+    }
+  }
+  // console.timeEnd();
+  return primeList;
+}
+
+// function to sum all primes from 1 - max
+function sumPrimes(max) {
+  var primeList = primeListFinder(max);
+  var primeSum = 0;
+  primeList.forEach(value => primeSum += value);
+  return primeSum;
+}
+
 
