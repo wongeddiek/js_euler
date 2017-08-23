@@ -62,6 +62,15 @@
 		"sC": 0,
 		"tS": 0
 		},
+	"\/scripts\/euler2.js": {
+		"ft": 64,
+		"mi": 0,
+		"oA": 0,
+		"oAP": "\/scripts\/min\/euler2-min.js",
+		"oF": 0,
+		"sC": 0,
+		"tS": 0
+		},
 	"\/scripts\/min\/euler-min.js": {
 		"ft": 64,
 		"mi": 0,
